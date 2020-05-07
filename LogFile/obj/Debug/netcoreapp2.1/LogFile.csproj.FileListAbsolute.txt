@@ -1,0 +1,16 @@
+C:\Users\Paul_NETC\source\repos\LogFile\LogFile\bin\Debug\netcoreapp2.1\appsettings.Development.json
+C:\Users\Paul_NETC\source\repos\LogFile\LogFile\bin\Debug\netcoreapp2.1\appsettings.json
+C:\Users\Paul_NETC\source\repos\LogFile\LogFile\bin\Debug\netcoreapp2.1\Properties\launchSettings.json
+C:\Users\Paul_NETC\source\repos\LogFile\LogFile\bin\Debug\netcoreapp2.1\LogFile.deps.json
+C:\Users\Paul_NETC\source\repos\LogFile\LogFile\bin\Debug\netcoreapp2.1\LogFile.runtimeconfig.json
+C:\Users\Paul_NETC\source\repos\LogFile\LogFile\bin\Debug\netcoreapp2.1\LogFile.runtimeconfig.dev.json
+C:\Users\Paul_NETC\source\repos\LogFile\LogFile\bin\Debug\netcoreapp2.1\LogFile.dll
+C:\Users\Paul_NETC\source\repos\LogFile\LogFile\obj\Debug\netcoreapp2.1\LogFile.csprojAssemblyReference.cache
+C:\Users\Paul_NETC\source\repos\LogFile\LogFile\obj\Debug\netcoreapp2.1\LogFile.RazorAssemblyInfo.cache
+C:\Users\Paul_NETC\source\repos\LogFile\LogFile\obj\Debug\netcoreapp2.1\LogFile.RazorAssemblyInfo.cs
+C:\Users\Paul_NETC\source\repos\LogFile\LogFile\obj\Debug\netcoreapp2.1\LogFile.AssemblyInfoInputs.cache
+C:\Users\Paul_NETC\source\repos\LogFile\LogFile\obj\Debug\netcoreapp2.1\LogFile.AssemblyInfo.cs
+C:\Users\Paul_NETC\source\repos\LogFile\LogFile\obj\Debug\netcoreapp2.1\LogFile.RazorTargetAssemblyInfo.cache
+C:\Users\Paul_NETC\source\repos\LogFile\LogFile\bin\Debug\netcoreapp2.1\LogFile.pdb
+C:\Users\Paul_NETC\source\repos\LogFile\LogFile\obj\Debug\netcoreapp2.1\LogFile.dll
+C:\Users\Paul_NETC\source\repos\LogFile\LogFile\obj\Debug\netcoreapp2.1\LogFile.pdb
