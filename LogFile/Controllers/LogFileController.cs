@@ -510,6 +510,34 @@ namespace LogFile.Controllers
             }
 
         }
+        [HttpGet("GetTotalRowsValues/{name}")]
+        public int GetTotalRowsValues([FromRoute] string name)
+        {
+            int value = 0;
+            try
+            {
+                connect.Open();
+                string query = "select count(*) as total from " + name.ToString();
+                SqlCommand sql = new SqlCommand();
+                sql.CommandText = query;
+                sql.Connection = connect;
+                sql.CommandType = System.Data.CommandType.Text;
+                SqlDataReader reader = sql.ExecuteReader();
+                while (reader.Read())
+                {
+                    value = (int) reader.GetValue(0);
+                }
+                reader.Close();
+                connect.Close();
+                return value;
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e.Message);
+                connect.Close();
+                return value;
+            }
+        }
         /// <summary>
         /// return the detail of dataTable
         /// </summary>
@@ -555,7 +583,7 @@ namespace LogFile.Controllers
                 reader.Close();
                 connect.Close();
                 list.RemoveAt(0); //suppression de id
-                foreach(TableInfo t in list)
+                /*foreach(TableInfo t in list)
                 {
                     foreach(string str in myList)
                     {
@@ -564,8 +592,8 @@ namespace LogFile.Controllers
                             final_List.Add(t);
                         }
                     }
-                }
-                return Ok(final_List.ToArray());
+                }*/
+                return Ok(list.ToArray());
             }
             catch (Exception e)
             {
@@ -796,13 +824,18 @@ namespace LogFile.Controllers
         [HttpGet("GetAllDataInTable/{name}")]
         public IActionResult GetDataTable([FromRoute] string name)
         {
+            int v1 = 0;
             string dbName = name.ToString();
             List<String> listDate = null;
             listDate = GetOnlyDateOfName(dbName);
+            int myCount = GetTotalRowsValues(dbName);
+            v1 = myCount - 10;
+
             try
             {
                 connect.Open();
-                string query = "SELECT * FROM " + dbName;
+                //string query = "select * from " + dbName + " ORDER BY id OFFSET " + v1 + " ROWS FETCH next 10 ROWS ONLY";
+                string query = "select * from " + dbName;
                 SqlCommand sql = new SqlCommand();
                 sql.CommandText = query;
                 sql.Connection = connect;
@@ -812,16 +845,16 @@ namespace LogFile.Controllers
                 int quant;
                 int y = 0;
                 string j = "";
-                while (reader.Read() && y<5000)
+                while (reader.Read())
                 {
-                    y++;
+                    //y++;
                     quant = reader.FieldCount;
                     Dictionary<String, Object> dict = new Dictionary<String, Object>();
                     for (int i = 0; i < quant; i++)
                     {
-                                              
+
                         if (listDate.Contains(reader.GetName(i)))
-                        {                           
+                        {
                             object obj_1 = reader.GetValue(i);
                             string str = "";
                             if (DBNull.Value.Equals(obj_1))
@@ -849,8 +882,8 @@ namespace LogFile.Controllers
                         {
                             dict.Add(reader.GetName(i), reader.GetValue(i));
                         }
-                       
-                    }                  
+
+                    }
                     list.Add(dict);
                 }
                 reader.Close();

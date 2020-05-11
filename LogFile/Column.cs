@@ -7,10 +7,10 @@ namespace LogFile
 {
     public class Column
     {
-        private  string name;
-        private  string defaultValue;
-        private string type;
-        private string value;
+        public  string name;
+        public  string defaultValue;
+        public  string type;
+        public string value;
     
 
         public Column()
