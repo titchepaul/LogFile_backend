@@ -47,7 +47,7 @@ namespace LogFile.Controllers
                 SqlDataReader reader = sql.ExecuteReader();
                 while (reader.Read() != false)
                 {
-                    list.Add(reader[3].ToString());
+                    list.Add(reader[3].ToString().ToUpper());
                 }
                 reader.Close();
                 connect.Close();
@@ -551,6 +551,8 @@ namespace LogFile.Controllers
             List<string> myList;
             TableInfo tableInfo = null;
             bool value;
+            string type = "";
+            object obj;
             var dbName = name.ToString();
             myList = GetListOfCount(dbName);
             try
@@ -576,7 +578,19 @@ namespace LogFile.Controllers
                     {
                         value = false;
                     }
-                    tableInfo = new TableInfo(reader[3].ToString(), reader[7].ToString(), value);
+                    obj = reader[8];
+                    if (DBNull.Value.Equals(obj))
+                    {
+                        type = reader[7].ToString();
+                    }else if (reader[8].ToString().Equals("-1"))
+                    {
+                        type = reader[7].ToString() + "(max)";
+                    }
+                    else
+                    {
+                        type = reader[7].ToString() + "(" + reader[8].ToString() + ")";
+                    }
+                    tableInfo = new TableInfo(reader[3].ToString(), type, value);
                     list.Add(tableInfo);
                 }
                 //var json = JsonConvert.SerializeObject(list, Formatting.None); //pas obliger cette ligne
@@ -1036,7 +1050,7 @@ namespace LogFile.Controllers
                 {
                     column += $"{item.Name}" + ",";
                     values += $"{item.Value}" + ",";
-                    dict.Add(item.Name, item.Value.ToString());
+                    dict.Add(item.Name.ToUpper(), item.Value.ToString());
                 }
             }
             foreach (string item in list)
