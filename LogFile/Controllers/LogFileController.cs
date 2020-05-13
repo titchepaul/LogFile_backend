@@ -590,13 +590,16 @@ namespace LogFile.Controllers
                     {
                         type = reader[7].ToString() + "(" + reader[8].ToString() + ")";
                     }
-                    tableInfo = new TableInfo(reader[3].ToString(), type, value);
-                    list.Add(tableInfo);
+                    if (myList.Contains(reader[3].ToString()))
+                    {
+                        tableInfo = new TableInfo(reader[3].ToString(), type, value);
+                        list.Add(tableInfo);
+                    }
                 }
                 //var json = JsonConvert.SerializeObject(list, Formatting.None); //pas obliger cette ligne
                 reader.Close();
                 connect.Close();
-                list.RemoveAt(0); //suppression de id
+                //list.RemoveAt(0); //suppression de id
                 /*foreach(TableInfo t in list)
                 {
                     foreach(string str in myList)
