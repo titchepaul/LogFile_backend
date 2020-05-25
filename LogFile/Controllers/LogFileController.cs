@@ -510,6 +510,33 @@ namespace LogFile.Controllers
             }
 
         }
+        public int GetTotalRowsOfTable(string tableName)
+        {
+            int value = 0;
+            try
+            {
+                connect.Open();
+                string query = "select count(*) as total from " + tableName.ToString();
+                SqlCommand sql = new SqlCommand();
+                sql.CommandText = query;
+                sql.Connection = connect;
+                sql.CommandType = System.Data.CommandType.Text;
+                SqlDataReader reader = sql.ExecuteReader();
+                while (reader.Read())
+                {
+                    value = (int)reader.GetValue(0);
+                }
+                reader.Close();
+                connect.Close();
+                return value;
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e.Message);
+                connect.Close();
+                return value;
+            }
+        }
         [HttpGet("GetTotalRowsValues/{name}")]
         public int GetTotalRowsValues([FromRoute] string name)
         {
@@ -835,23 +862,30 @@ namespace LogFile.Controllers
         }
         /// <summary>
         /// return the contains of dataTable
-        /// </summary>
+        /// </summary>  fait la même chose que GetDataInTableByRows
         /// <param name="name">dataTable_name</param>
         /// <returns></returns>
         [HttpGet("GetAllDataInTable/{name}")]
         public IActionResult GetDataTable([FromRoute] string name)
         {
-            int v1 = 0;
+            //int offset = 0;
             string dbName = name.ToString();
             List<String> listDate = null;
             listDate = GetOnlyDateOfName(dbName);
-            int myCount = GetTotalRowsValues(dbName);
-            v1 = myCount - 10;
+            //int totalRows = GetTotalRowsValues(dbName);
+            //if(totalRows > 100)
+            //{
+            //    offset = totalRows - 100;
+            //}
+            //else
+            //{
+            //    offset =0;
+            //}
 
             try
             {
                 connect.Open();
-                //string query = "select * from " + dbName + " ORDER BY id OFFSET " + v1 + " ROWS FETCH next 10 ROWS ONLY";
+                //string query = "select * from " + dbName + " ORDER BY id OFFSET " + offset + " ROWS FETCH next 100 ROWS ONLY";
                 string query = "select * from " + dbName;
                 SqlCommand sql = new SqlCommand();
                 sql.CommandText = query;
@@ -917,6 +951,176 @@ namespace LogFile.Controllers
         /// 
         /// </summary>
         /// <returns></returns>
+        /// 
+        [HttpGet("GetDataInTableByRows/{name}")]
+        public IActionResult GetDataInTableByRows([FromRoute] string name)
+        {
+            int offset = 0;
+            string dbName = name.ToString();
+            List<String> listDate = null;
+            listDate = GetOnlyDateOfName(dbName);
+            int totalRows = GetTotalRowsValues(dbName);
+            if (totalRows > 1000)
+            {
+                offset = totalRows - 1000;
+            }
+            else
+            {
+                offset = 0;
+            }
+
+            try
+            {
+                connect.Open();
+                string query = "select * from " + dbName + " ORDER BY id OFFSET " + offset + " ROWS FETCH next 1000 ROWS ONLY";
+                //string query = "select * from " + dbName;
+                //string query = "SELECT TOP 1000 * FROM " + dbName + " ORDER BY id DESC";
+                SqlCommand sql = new SqlCommand();
+                sql.CommandText = query;
+                sql.Connection = connect;
+                sql.CommandType = System.Data.CommandType.Text;
+                SqlDataReader reader = sql.ExecuteReader();
+                ArrayList list = new ArrayList();
+                int quant;
+                int y = 0;
+                string j = "";
+                while (reader.Read())
+                {
+                    //y++;
+                    quant = reader.FieldCount;
+                    Dictionary<String, Object> dict = new Dictionary<String, Object>();
+                    for (int i = 0; i < quant; i++)
+                    {
+
+                        if (listDate.Contains(reader.GetName(i)))
+                        {
+                            object obj_1 = reader.GetValue(i);
+                            string str = "";
+                            if (DBNull.Value.Equals(obj_1))
+                            {
+                                dict.Add(reader.GetName(i), reader.GetValue(i));
+                            }
+                            else
+                            {
+                                j = reader.GetValue(i).ToString();
+                                for (int k = 0; k <= j.Length - 1; k++)
+                                {
+                                    if (j[k].Equals(' '))
+                                    {
+                                        str += "  ";
+                                    }
+                                    else
+                                    {
+                                        str += j[k];
+                                    }
+                                }
+                                dict.Add(reader.GetName(i), str);
+                            }
+                        }
+                        else
+                        {
+                            dict.Add(reader.GetName(i), reader.GetValue(i));
+                        }
+
+                    }
+                    list.Add(dict);
+                }
+                reader.Close();
+                connect.Close();
+                return Ok(list);
+            }
+            catch (Exception e)
+            {
+                connect.Close();
+                return BadRequest(e.Message);
+            }
+        }
+        
+        
+        [HttpPost("GetDataInTableByRowsOnly/{name}")]
+        public IActionResult GetDataInTableByRowsOnly([FromRoute] string name,[FromBody] Object JsonObject)
+        {         
+            string dbName = name.ToString();
+            List<String> listDate = null;
+            listDate = GetOnlyDateOfName(dbName);
+            string value = "";
+            var json = (JObject)JsonObject;
+            foreach (var js in json.Properties())
+            {
+                if (!js.Value.ToString().Equals(""))
+                {
+                    //dico.Add(js.Name, js.Value.ToString());
+                    value = js.Value.ToString();
+                }
+            }
+            int myVar = Int16.Parse(value);
+            //int myCount = GetTotalRowsValues(dbName);
+
+            try
+            {
+                connect.Open();
+                string query = "select * from " + dbName + " ORDER BY id OFFSET " + myVar + " ROWS FETCH next 1000 ROWS ONLY";
+                //string query = "select * from " + dbName;
+                SqlCommand sql = new SqlCommand();
+                sql.CommandText = query;
+                sql.Connection = connect;
+                sql.CommandType = System.Data.CommandType.Text;
+                SqlDataReader reader = sql.ExecuteReader();
+                ArrayList list = new ArrayList();
+                int quant;
+                int y = 0;
+                string j = "";
+                while (reader.Read())
+                {
+                    //y++;
+                    quant = reader.FieldCount;
+                    Dictionary<String, Object> dict = new Dictionary<String, Object>();
+                    for (int i = 0; i < quant; i++)
+                    {
+
+                        if (listDate.Contains(reader.GetName(i)))
+                        {
+                            object obj_1 = reader.GetValue(i);
+                            string str = "";
+                            if (DBNull.Value.Equals(obj_1))
+                            {
+                                dict.Add(reader.GetName(i), reader.GetValue(i));
+                            }
+                            else
+                            {
+                                j = reader.GetValue(i).ToString();
+                                for (int k = 0; k <= j.Length - 1; k++)
+                                {
+                                    if (j[k].Equals(' '))
+                                    {
+                                        str += "  ";
+                                    }
+                                    else
+                                    {
+                                        str += j[k];
+                                    }
+                                }
+                                dict.Add(reader.GetName(i), str);
+                            }
+                        }
+                        else
+                        {
+                            dict.Add(reader.GetName(i), reader.GetValue(i));
+                        }
+
+                    }
+                    list.Add(dict);
+                }
+                reader.Close();
+                connect.Close();
+                return Ok(list);
+            }
+            catch (Exception e)
+            {
+                connect.Close();
+                return BadRequest(e.Message);
+            }
+        }
         [HttpGet("GetData/{name}")]
         public IActionResult GetData([FromRoute] string name)
         {
