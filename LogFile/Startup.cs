@@ -37,9 +37,9 @@ namespace LogFile
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            var conf = new Cloudbizz.Panel.Config();
-            var key = conf.GetVariable("Cloudbizz.Api.Keys.Log");
-            var correctKey = $"Bearer {key}";
+            //var conf = new Cloudbizz.Panel.Config();
+            //var key = conf.GetVariable("Cloudbizz.Api.Keys.Log");
+            //var correctKey = $"Bearer {key}";
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -52,7 +52,7 @@ namespace LogFile
                       
            
 
-          /* app.Use(async (context, next) =>
+          /*app.Use(async (context, next) =>
             {
                 var authHeader = context.Request.Headers["Authorization"];
                

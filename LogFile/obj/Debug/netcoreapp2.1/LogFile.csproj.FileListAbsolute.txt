@@ -14,3 +14,17 @@ C:\Users\Paul_NETC\source\repos\LogFile\LogFile\obj\Debug\netcoreapp2.1\LogFile.
 C:\Users\Paul_NETC\source\repos\LogFile\LogFile\bin\Debug\netcoreapp2.1\LogFile.pdb
 C:\Users\Paul_NETC\source\repos\LogFile\LogFile\obj\Debug\netcoreapp2.1\LogFile.dll
 C:\Users\Paul_NETC\source\repos\LogFile\LogFile\obj\Debug\netcoreapp2.1\LogFile.pdb
+C:\Users\pault\Desktop\school\q6\najo\back\repos\LogFile\LogFile\bin\Debug\netcoreapp2.1\LogFile.deps.json
+C:\Users\pault\Desktop\school\q6\najo\back\repos\LogFile\LogFile\bin\Debug\netcoreapp2.1\LogFile.runtimeconfig.json
+C:\Users\pault\Desktop\school\q6\najo\back\repos\LogFile\LogFile\bin\Debug\netcoreapp2.1\LogFile.runtimeconfig.dev.json
+C:\Users\pault\Desktop\school\q6\najo\back\repos\LogFile\LogFile\bin\Debug\netcoreapp2.1\LogFile.dll
+C:\Users\pault\Desktop\school\q6\najo\back\repos\LogFile\LogFile\bin\Debug\netcoreapp2.1\LogFile.pdb
+C:\Users\pault\Desktop\school\q6\najo\back\repos\LogFile\LogFile\obj\Debug\netcoreapp2.1\LogFile.csprojAssemblyReference.cache
+C:\Users\pault\Desktop\school\q6\najo\back\repos\LogFile\LogFile\obj\Debug\netcoreapp2.1\LogFile.csproj.CoreCompileInputs.cache
+C:\Users\pault\Desktop\school\q6\najo\back\repos\LogFile\LogFile\obj\Debug\netcoreapp2.1\LogFile.RazorAssemblyInfo.cache
+C:\Users\pault\Desktop\school\q6\najo\back\repos\LogFile\LogFile\obj\Debug\netcoreapp2.1\LogFile.RazorAssemblyInfo.cs
+C:\Users\pault\Desktop\school\q6\najo\back\repos\LogFile\LogFile\obj\Debug\netcoreapp2.1\LogFile.AssemblyInfoInputs.cache
+C:\Users\pault\Desktop\school\q6\najo\back\repos\LogFile\LogFile\obj\Debug\netcoreapp2.1\LogFile.AssemblyInfo.cs
+C:\Users\pault\Desktop\school\q6\najo\back\repos\LogFile\LogFile\obj\Debug\netcoreapp2.1\LogFile.RazorTargetAssemblyInfo.cache
+C:\Users\pault\Desktop\school\q6\najo\back\repos\LogFile\LogFile\obj\Debug\netcoreapp2.1\LogFile.dll
+C:\Users\pault\Desktop\school\q6\najo\back\repos\LogFile\LogFile\obj\Debug\netcoreapp2.1\LogFile.pdb

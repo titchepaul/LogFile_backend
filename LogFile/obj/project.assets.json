@@ -2,15 +2,6 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v2.1": {
-      "Cloudbizz.Config/1.0.1": {
-        "type": "package",
-        "compile": {
-          "lib/net40/Cloudbizz.Config.dll": {}
-        },
-        "runtime": {
-          "lib/net40/Cloudbizz.Config.dll": {}
-        }
-      },
       "IdentityModel/3.6.0": {
         "type": "package",
         "dependencies": {
@@ -4682,17 +4673,6 @@
     }
   },
   "libraries": {
-    "Cloudbizz.Config/1.0.1": {
-      "sha512": "JAFMEgq7qCZQDazki8wsUSa0FIdt2XZF4yb4tLJUSRiOlt2br19yaOVAWVZTeBMCZ9mLDHWHTz9aQXBIPYWj6w==",
-      "type": "package",
-      "path": "cloudbizz.config/1.0.1",
-      "files": [
-        ".nupkg.metadata",
-        "cloudbizz.config.1.0.1.nupkg.sha512",
-        "cloudbizz.config.nuspec",
-        "lib/net40/Cloudbizz.Config.dll"
-      ]
-    },
     "IdentityModel/3.6.0": {
       "sha512": "7398ntAQ/wlrZA9IjXA8ixrPIomBqnY3fp10FLle6WhhyWdZIEuhZEgvAfIEo+6zjktmJvhwBOAuQeNULNVyDQ==",
       "type": "package",
@@ -12757,7 +12737,6 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.1": [
-      "Cloudbizz.Config >= 1.0.1",
       "IdentityServer4.AccessTokenValidation >= 2.6.0",
       "Microsoft.AspNet.WebApi.Core >= 5.2.7",
       "Microsoft.AspNetCore.App >= 2.1.1",
@@ -12770,19 +12749,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Paul_NETC\\.nuget\\packages\\": {}
+    "C:\\Users\\pault\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Paul_NETC\\source\\repos\\LogFile\\LogFile\\LogFile.csproj",
+      "projectUniqueName": "C:\\Users\\pault\\Desktop\\school\\q6\\najo\\back\\repos\\LogFile\\LogFile\\LogFile.csproj",
       "projectName": "LogFile",
-      "projectPath": "C:\\Users\\Paul_NETC\\source\\repos\\LogFile\\LogFile\\LogFile.csproj",
-      "packagesPath": "C:\\Users\\Paul_NETC\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Paul_NETC\\source\\repos\\LogFile\\LogFile\\obj\\",
+      "projectPath": "C:\\Users\\pault\\Desktop\\school\\q6\\najo\\back\\repos\\LogFile\\LogFile\\LogFile.csproj",
+      "packagesPath": "C:\\Users\\pault\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\pault\\Desktop\\school\\q6\\najo\\back\\repos\\LogFile\\LogFile\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Paul_NETC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\pault\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -12790,7 +12773,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "K:\\DEV\\PACKAGES": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -12807,10 +12789,6 @@
     "frameworks": {
       "netcoreapp2.1": {
         "dependencies": {
-          "Cloudbizz.Config": {
-            "target": "Package",
-            "version": "[1.0.1, )"
-          },
           "IdentityServer4.AccessTokenValidation": {
             "target": "Package",
             "version": "[2.6.0, )"
@@ -12839,7 +12817,6 @@
             "version": "[2.1.14, )"
           },
           "Microsoft.NETCore.App": {
-            "suppressParent": "All",
             "target": "Package",
             "version": "[2.1.0, )",
             "autoReferenced": true
@@ -12854,16 +12831,10 @@
           }
         },
         "imports": [
-          "net461",
-          "net462",
-          "net47",
-          "net471",
-          "net472",
-          "net48"
+          "net461"
         ],
         "assetTargetFallback": true,
-        "warn": true,
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.102\\RuntimeIdentifierGraph.json"
+        "warn": true
       }
     }
   },
@@ -12872,17 +12843,7 @@
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Package 'Cloudbizz.Config 1.0.1' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v2.1'. This package may not be fully compatible with your project.",
-      "libraryId": "Cloudbizz.Config",
-      "targetGraphs": [
-        ".NETCoreApp,Version=v2.1"
-      ]
-    },
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'Microsoft.AspNet.WebApi.Core 5.2.7' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v2.1'. This package may not be fully compatible with your project.",
+      "message": "Le package 'Microsoft.AspNet.WebApi.Core 5.2.7' a été restauré en utilisant '.NETFramework,Version=v4.6.1' au lieu du framework cible du projet '.NETCoreApp,Version=v2.1'. Ce package n'est peut-être pas totalement compatible avec votre projet.",
       "libraryId": "Microsoft.AspNet.WebApi.Core",
       "targetGraphs": [
         ".NETCoreApp,Version=v2.1"

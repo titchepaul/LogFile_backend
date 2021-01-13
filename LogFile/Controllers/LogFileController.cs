@@ -19,7 +19,7 @@ namespace LogFile.Controllers
     [EnableCors("CorsPolicy")]
     public class LogFileController : ControllerBase
     {
-        private static string connectionString = "Server=VDI-NETC096\\SQLEXPRESS;Database=ServiceLog;Trusted_Connection=True";
+        private static string connectionString = "Server=TITCHE;Database=RoomsManager.database.dev;Trusted_Connection=True;";
         private readonly SqlConnection connect = new SqlConnection(connectionString);
 
         // GET api/values
